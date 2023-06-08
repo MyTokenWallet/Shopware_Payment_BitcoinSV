@@ -1,7 +1,7 @@
 /*
  * (c) LX <lxhost.com@gmail.com>
  * (c) 2017 Miguel Padilla <miguel.padilla@zwilla.de>
- * Donations: BCH:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
+ * Donations: BSV:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -46,12 +46,12 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.List', {
             flex: 3,
             dataIndex: 'bitcoincash_address'
         },{
-            text: '{s name=list/columns/value_in_bch}Value in BCH{/s}',
+            text: '{s name=list/columns/value_in_bch}Value in BSV{/s}',
             flex: 2,
             align: 'right',
-            dataIndex: 'valueInBCH'
+            dataIndex: 'valueInBSV'
         },{
-            text: '{s name=list/columns/total_paid_in_bch}Paid in BCH{/s}',
+            text: '{s name=list/columns/total_paid_in_bch}Paid in BSV{/s}',
             flex: 2,
             align: 'right',
             dataIndex: 'total_paid_in_bch'

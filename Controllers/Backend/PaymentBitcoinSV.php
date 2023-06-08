@@ -2,7 +2,7 @@
 /*
  * (c) LX <lxhost.com@gmail.com>
  * (c) 2017 Miguel Padilla <miguel.padilla@zwilla.de>
- * Donations: BCH:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
+ * Donations: BSV:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -106,7 +106,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
                 array('bcha' => 'zwilla_free_bitcoincash_address'),
                 'bcha.address = o.transactionID',
                 array(
-                    'bchStatus' => 'bcha.status', 'valueInBCH' => 'bcha.value_in_BCH'
+                    'bchStatus' => 'bcha.status', 'valueInBSV' => 'bcha.value_in_BSV'
                 )
             )
             ->joinLeft(

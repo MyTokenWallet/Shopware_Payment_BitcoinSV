@@ -3,7 +3,7 @@
 /*
  * (c) LX <lxhost.com@gmail.com>
  * (c) 2017 Miguel Padilla <miguel.padilla@zwilla.de>
- * Donations: BCH:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
+ * Donations: BSV:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -75,14 +75,14 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
             if (!in_array($currency_iso_code, $limited_currencies)) {
                 $this->redirect(array('controller' => 'checkout'));
             } else {
-                /** https://cex.io/api/last_price/BCH/EUR **/
-                //$value_in_BCH = file_get_contents("https://blockchain.info/tobch?currency=".$currency_iso_code."&value=".$amountdue."");
-                $json = file_get_contents('https://cex.io/api/last_price/BCH/EUR');
+                /** https://cex.io/api/last_price/BSV/EUR **/
+                //$value_in_BSV = file_get_contents("https://blockchain.info/tobch?currency=".$currency_iso_code."&value=".$amountdue."");
+                $json = file_get_contents('https://cex.io/api/last_price/BSV/EUR');
                 $json = json_decode($json, true);
 
-                $value_in_BCH = 1/($json['lprice'] / $amountdue);
+                $value_in_BSV = 1/($json['lprice'] / $amountdue);
 
-                if ($value_in_BCH > 0) {
+                if ($value_in_BSV > 0) {
                     /** @var TYPE_NAME $zw_extended_public_key */
                     $zw_extended_public_key = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_extended_public_key');
                     $zw_blockchain_api_key = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_blockchain_api_key');
@@ -133,16 +133,16 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
                         $invoiceAmount = $order->getInvoiceAmount();
 
                         Shopware()->Db()->exec("INSERT INTO `zwilla_free_bitcoincash_address` 
-                                (`id_order`,`value_in_BCH`,`address`,`status`,`crdate`) 
+                                (`id_order`,`value_in_BSV`,`address`,`status`,`crdate`)
                             VALUES
-                                ('".(int)$orderId."', '".(double)$value_in_BCH."', '".$address."', 'Pending', CURRENT_TIMESTAMP)");
+                                ('".(int)$orderId."', '".(double)$value_in_BSV."', '".$address."', 'Pending', CURRENT_TIMESTAMP)");
 
-                        $order->setComment('Please pay ' . $value_in_BCH . ' BCH to this address ' . $address . ' for order number ' . $orderNumber);
+                        $order->setComment('Please pay ' . $value_in_BSV . ' BSV to this address ' . $address . ' for order number ' . $orderNumber);
 
                         Shopware()->Models()->flush($order);
                         $this->View()->receivedAddress = 'YES';
                         $this->View()->bitcoinsvAddress = $address;
-                        $this->View()->valueInBCH = $value_in_BCH;
+                        $this->View()->valueInBSV = $value_in_BSV;
                         $this->View()->orderNumber = $orderNumber;
                         $this->View()->invoiceAmount = $invoiceAmount;
                         $this->View()->orderCurrency = $orderCurrency;
@@ -180,7 +180,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
         $result = Shopware()->Db()->fetchRow("SELECT * FROM `zwilla_free_bitcoincash_address` WHERE `address` = '".$address."'");
         if ($result) {
             $id_order = $result['id_order'];
-            $to_pay_in_BCH = $result['value_in_BCH'];
+            $to_pay_in_BSV = $result['value_in_BSV'];
             $userId = Shopware()->Db()->fetchOne('SELECT `userID` FROM `s_order` WHERE `id` = ?', $id_order);
             $secret_sent = strtoupper(md5($config_secret.'-'.$userId));
 
@@ -211,17 +211,17 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
                     $total_paid_in_bch = $total_paid_in_satoshi / 100000000;
                     $order = Shopware()->Modules()->Order();
 
-                    if ($total_paid_in_bch >= $to_pay_in_BCH) {
-                        if ($total_paid_in_bch == $to_pay_in_BCH) {
+                    if ($total_paid_in_bch >= $to_pay_in_BSV) {
+                        if ($total_paid_in_bch == $to_pay_in_BSV) {
                             $order->setPaymentStatus($id_order, 12, true, 'Paid');
                             $order->setOrderStatus($id_order, 1, false, 'In Process');
                             Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'Paid' WHERE `address` = '".$address."'");
-                        } elseif ($total_paid_in_bch > $to_pay_in_BCH) {
+                        } elseif ($total_paid_in_bch > $to_pay_in_BSV) {
                             $order->setPaymentStatus($id_order, 12, true, 'OverPaid');
                             $order->setOrderStatus($id_order, 8, false, 'Clarification Required, OverPaid');
                             Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'OverPaid' WHERE `address` = '".$address."'");
                         }
-                    } elseif ($total_paid_in_bch < $to_pay_in_BCH) {
+                    } elseif ($total_paid_in_bch < $to_pay_in_BSV) {
                         $order->setPaymentStatus($id_order, 11, true, 'UnderPaid');
                         Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'UnderPaid' WHERE `address` = '".$address."'");
                     }

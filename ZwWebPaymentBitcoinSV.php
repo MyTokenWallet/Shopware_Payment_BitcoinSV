@@ -3,7 +3,7 @@
 /*
  * (c) LX <lxhost.com@gmail.com>
  * (c) 2017 Miguel Padilla <miguel.padilla@zwilla.de>
- * Donations: BCH:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
+ * Donations: BSV:1L81xy6FoMHpNWxFtKTKGbsz9Sye1sSpSp BTC:1kD11aS83Du87EigaCodD8HVYmurHgT6i  ETH:0x8F2E4fd2f76235f38188C2077978F3a0B278a453
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -34,7 +34,7 @@ class ZwWebPaymentBitcoinSV extends Plugin
         $sql_a = "CREATE TABLE IF NOT EXISTS `zwilla_free_bitcoincash_address` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `id_order` int(11),
-            `value_in_BCH` double NOT NULL,
+            `value_in_BSV` double NOT NULL,
             `address` varchar(64) NOT NULL,
             `status` enum('Pending','AwaitingConfirmations','UnderPaid','Paid','OverPaid') NOT NULL DEFAULT 'Pending',
             `crdate` datetime NOT NULL,
