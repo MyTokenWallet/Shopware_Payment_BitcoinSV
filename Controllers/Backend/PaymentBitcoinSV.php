@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controllers_Backend_ExtJs
+class Shopware_Controllers_Backend_PaymentBitcoinSV extends Shopware_Controllers_Backend_ExtJs
 {
     /**
      * List payments action.

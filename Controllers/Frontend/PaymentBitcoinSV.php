@@ -10,7 +10,7 @@
 
 require_once __DIR__ . '/../../Components/CSRFWhitelistAware.php';
 
-class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controllers_Frontend_Payment implements \Shopware\Components\CSRFWhitelistAware
+class Shopware_Controllers_Frontend_PaymentBitcoinSV extends Shopware_Controllers_Frontend_Payment implements \Shopware\Components\CSRFWhitelistAware
 {
     /**
      * @var Enlight_Components_Session_Namespace $session
