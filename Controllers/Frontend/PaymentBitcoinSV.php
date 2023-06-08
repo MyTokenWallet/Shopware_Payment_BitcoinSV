@@ -91,7 +91,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
                     $config_secret = trim($zw_callback_secret);
                     $secret = strtoupper(md5($config_secret.'-'.$this->session->sUserId));
 
-                    $url = Shopware()->Router()->assemble(array('action' => 'notify', 'controller' => 'PaymentBitcoinCash', 'module' => 'frontend', 'secret' => $secret, 'forceSecure' => true));
+                    $url = Shopware()->Router()->assemble(array('action' => 'notify', 'controller' => 'PaymentBitcoinSV', 'module' => 'frontend', 'secret' => $secret, 'forceSecure' => true));
                     $callback_url = htmlspecialchars($url);
 
                     $xpub = trim($zw_extended_public_key);

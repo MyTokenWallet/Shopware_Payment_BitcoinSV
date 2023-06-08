@@ -6,9 +6,9 @@
  * file that was distributed with this source code.
  */
 
-Ext.define('Shopware.apps.PaymentBitcoinCash.store.main.List', {
+Ext.define('Shopware.apps.PaymentBitcoinSV.store.main.List', {
 	extend: 'Ext.data.Store',
-	model: 'Shopware.apps.PaymentBitcoinCash.model.main.List',
+	model: 'Shopware.apps.PaymentBitcoinSV.model.main.List',
 	proxy: {
         type: 'ajax',
         url : '{url action=getList}',

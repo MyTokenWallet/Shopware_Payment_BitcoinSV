@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-Ext.define('Shopware.apps.PaymentBitcoinCash.view.main.Window', {
+Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.Window', {
     extend: 'Enlight.app.Window',
     alias: 'widget.bitcoincash-main-window',
 

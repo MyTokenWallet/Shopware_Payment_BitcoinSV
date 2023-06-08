@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-Ext.define('Shopware.apps.PaymentBitcoinCash.view.main.List', {
+Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.List', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.bitcoincash-main-list',
 

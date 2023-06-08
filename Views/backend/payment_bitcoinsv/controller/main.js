@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-Ext.define('Shopware.apps.PaymentBitcoinCash.controller.Main', {
+Ext.define('Shopware.apps.PaymentBitcoinSV.controller.Main', {
     extend: 'Enlight.app.Controller',
 
     refs: [

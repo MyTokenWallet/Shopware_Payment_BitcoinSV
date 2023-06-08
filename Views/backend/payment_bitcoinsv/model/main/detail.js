@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-Ext.define('Shopware.apps.PaymentBitcoinCash.model.main.Detail', {
+Ext.define('Shopware.apps.PaymentBitcoinSV.model.main.Detail', {
     extend: 'Ext.data.Model',
 	fields: [
         { name: 'number', type: 'int' },

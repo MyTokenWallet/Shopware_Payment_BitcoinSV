@@ -4,7 +4,7 @@
             <name>BitcoinSV</name>
             <label lang="en">BitcoinSV</label>
             <label lang="de">BitcoinSV</label>
-            <controller>PaymentBitcoinCash</controller>
+            <controller>PaymentBitcoinSV</controller>
             <action>index</action>
             <class>sprite-eye</class>
             <parent identifiedBy="controller">Payments</parent>

@@ -115,7 +115,7 @@ class ZwWebPaymentBitcoinSV extends Plugin
     {
         Shopware()->Template()->addTemplateDir($this->getPath() . '/Views/');
 
-        return $this->getPath() . '/Controllers/Frontend/PaymentBitcoinCash.php';
+        return $this->getPath() . '/Controllers/Frontend/PaymentBitcoinSV.php';
     }
 
 
@@ -129,7 +129,7 @@ class ZwWebPaymentBitcoinSV extends Plugin
         Shopware()->Template()->addTemplateDir($this->getPath() . '/Views/');
         Shopware()->Snippets()->addConfigDir($this->getPath() . '/Snippets/');
 
-        return $this->getPath() . '/Controllers/Backend/PaymentBitcoinCash.php';
+        return $this->getPath() . '/Controllers/Backend/PaymentBitcoinSV.php';
     }
 
 
