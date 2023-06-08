@@ -10,10 +10,10 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.controller.Main', {
     extend: 'Enlight.app.Controller',
 
     refs: [
-        { ref: 'window', selector: 'bitcoincash-main-window' },
-        { ref: 'detail', selector: 'bitcoincash-main-detail' },
-        { ref: 'list', selector: 'bitcoincash-main-list' },
-        { ref: 'shopCombo', selector: 'bitcoincash-main-list [name=shopId]' }
+        { ref: 'window', selector: 'bitcoinsv-main-window' },
+        { ref: 'detail', selector: 'bitcoinsv-main-detail' },
+        { ref: 'list', selector: 'bitcoinsv-main-list' },
+        { ref: 'shopCombo', selector: 'bitcoinsv-main-list [name=shopId]' }
     ],
 
     stores: ['main.List', 'main.Detail'],
@@ -45,11 +45,11 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.controller.Main', {
 
         // Register events
         me.control({
-            'bitcoincash-main-list': {
+            'bitcoinsv-main-list': {
                 selectionchange: me.onSelectionChange,
                 shopSelectionChanged: me.onShopSelectionChanged
             },
-            'bitcoincash-main-list [name=searchfield]': {
+            'bitcoinsv-main-list [name=searchfield]': {
                 change: me.onSearchForm
             }
         });

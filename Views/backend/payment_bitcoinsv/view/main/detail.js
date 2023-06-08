@@ -8,7 +8,7 @@
 
 Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.Detail', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.bitcoincash-main-detail',
+    alias: 'widget.bitcoinsv-main-detail',
 
     store: 'main.Detail',
 

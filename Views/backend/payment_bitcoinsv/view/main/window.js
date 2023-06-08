@@ -8,7 +8,7 @@
 
 Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.Window', {
     extend: 'Enlight.app.Window',
-    alias: 'widget.bitcoincash-main-window',
+    alias: 'widget.bitcoinsv-main-window',
 
     width: 1200,
     height: 500,
@@ -30,10 +30,10 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.Window', {
         var me = this;
         return [{
             region: 'east',
-            xtype: 'bitcoincash-main-detail'
+            xtype: 'bitcoinsv-main-detail'
         }, {
             region: 'center',
-            xtype: 'bitcoincash-main-list'
+            xtype: 'bitcoinsv-main-list'
         }];
     }
 });
