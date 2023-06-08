@@ -2,8 +2,8 @@
 <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
 
-    <label lang="de">BitcoinCash</label>
-    <label lang="en">BitcoinCash</label>
+    <label lang="de">BitcoinSV</label>
+    <label lang="en">BitcoinSV</label>
 
     <version>1.0.1</version>
     <copyright>LX and ZWILLA</copyright>
@@ -16,15 +16,15 @@
 
     <description lang="en" format="html">
         <![CDATA[
-          <h2>Blockchain Receive BitcoinCash Payments</h2>
-          <p>This module allows you to accept BitcoinCash payments from your customers using blockchain.info's Receive Payments API V2.</p>
+          <h2>Blockchain Receive BitcoinSV Payments</h2>
+          <p>This module allows you to accept BitcoinSV payments from your customers using blockchain.info's Receive Payments API V2.</p>
         ]]>
     </description>
 
     <description lang="de" format="html">
         <![CDATA[
-          <h2>Blockchain Receive BitcoinCash Payments</h2>
-          <p>This module allows you to accept BitcoinCash payments from your customers using blockchain.info's Receive Payments API V2.</p>
+          <h2>Blockchain Receive BitcoinSV Payments</h2>
+          <p>This module allows you to accept BitcoinSV payments from your customers using blockchain.info's Receive Payments API V2.</p>
         ]]>
     </description>
 

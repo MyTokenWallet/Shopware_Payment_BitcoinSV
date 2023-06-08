@@ -24,7 +24,7 @@ Ext.define('Shopware.apps.PaymentBitcoinCash.controller.Main', {
         error: {
             title: '{s name="ErrorTitle"}Transaction not found{/s}',
             general: '{s name="errorMessageGeneral"}<b>Possible cause:</b><br>[0]<br><br><b>Actual error message:</b><br>[1]{/s}',
-            10007: '{s name="invalidTransaction"}The transaction is not valid or not known to BitcoinCash, not paid yet{/s}'
+            10007: '{s name="invalidTransaction"}The transaction is not valid or not known to BitcoinSV, not paid yet{/s}'
         }
     },
 

@@ -14,7 +14,7 @@ Ext.define('Shopware.apps.PaymentBitcoinCash.view.main.Window', {
     height: 500,
     layout: 'border',
 
-    title: '{s name=window/title}BitcoinCash Payments{/s}',
+    title: '{s name=window/title}BitcoinSV Payments{/s}',
 
     initComponent: function() {
         var me = this;

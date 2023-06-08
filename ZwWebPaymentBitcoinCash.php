@@ -13,7 +13,7 @@ namespace ZwWebPaymentBitcoinCash;
 
 use Doctrine\ORM\Tools\SchemaTool;
 use Shopware\Components\Plugin;
-use ZwWebPaymentBitcoinCash\Components\BitcoinCash\AddressValidator;
+use ZwWebPaymentBitcoinCash\Components\BitcoinSV\AddressValidator;
 use Shopware\Bundle\AttributeBundle\Service\DataLoader;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UninstallContext;
@@ -140,11 +140,11 @@ class ZwWebPaymentBitcoinCash extends Plugin
     {
         $options = array(
                 'name' => 'zwillaweb_payment_bitcoincash',
-                'description' => 'BitcoinCash',
+                'description' => 'BitcoinSV',
                 'action' => 'payment_bitcoincash',
                 'active' => 1,
                 'position' => 0,
-                'additionalDescription' => 'Pay save and secured with BitcoinCash.'
+                'additionalDescription' => 'Pay save and secured with BitcoinSV.'
             );
 
         $payment = Shopware()->Models()->getRepository('Shopware\Models\Payment\Payment')->findOneBy(array('name' => 'zwillaweb_payment_bitcoincash'));

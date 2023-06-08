@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.2/engine/Shopware/Components/Plugin/schema/config.xsd">
 
-    <label lang="en">BitcoinCash Payments Plugin</label>
-    <label lang="de">BitcoinCash Payments Plugin</label>
+    <label lang="en">BitcoinSV Payments Plugin</label>
+    <label lang="de">BitcoinSV Payments Plugin</label>
 
-    <description lang="en">BitcoinCash Payments Plugin for blockchain.info</description>
-    <description lang="de">BitcoinCash Payments Plugin for blockchain.info</description>
+    <description lang="en">BitcoinSV Payments Plugin for blockchain.info</description>
+    <description lang="de">BitcoinSV Payments Plugin for blockchain.info</description>
 
     <elements>
         <element required="true" type="text">

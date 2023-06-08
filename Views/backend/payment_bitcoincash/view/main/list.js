@@ -42,7 +42,7 @@ Ext.define('Shopware.apps.PaymentBitcoinCash.view.main.List', {
             flex: 1,
             dataIndex: 'orderNumber'
         },{
-            text: '{s name=list/columns/bitcoincash_address_text}BitcoinCash address{/s}',
+            text: '{s name=list/columns/bitcoincash_address_text}BitcoinSV address{/s}',
             flex: 3,
             dataIndex: 'bitcoincash_address'
         },{
@@ -56,7 +56,7 @@ Ext.define('Shopware.apps.PaymentBitcoinCash.view.main.List', {
             align: 'right',
             dataIndex: 'total_paid_in_bch'
         },{
-            text: '{s name=list/columns/bitcoincash_status}BitcoinCash Status{/s}',
+            text: '{s name=list/columns/bitcoincash_status}BitcoinSV Status{/s}',
             flex: 2,
             dataIndex: 'bchStatus'
         },{

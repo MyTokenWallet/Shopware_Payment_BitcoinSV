@@ -1,6 +1,6 @@
 # ZwWebPaymentBitcoinCash
 
-## A BitcoinCash integration for shopware
+## A BitcoinSV integration for shopware
 
 ## License
 
