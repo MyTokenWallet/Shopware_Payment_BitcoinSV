@@ -84,9 +84,9 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
 
                 if ($value_in_BCH > 0) {
                     /** @var TYPE_NAME $zw_extended_public_key */
-                    $zw_extended_public_key = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinCash', 'zw_extended_public_key');
-                    $zw_blockchain_api_key = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinCash', 'zw_blockchain_api_key');
-                    $zw_callback_secret = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinCash', 'zw_callback_secret');
+                    $zw_extended_public_key = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_extended_public_key');
+                    $zw_blockchain_api_key = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_blockchain_api_key');
+                    $zw_callback_secret = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_callback_secret');
 
                     $config_secret = trim($zw_callback_secret);
                     $secret = strtoupper(md5($config_secret.'-'.$this->session->sUserId));
@@ -175,7 +175,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
         $confirmations = $this->Request()->getParam('confirmations');
         $value_in_satoshi = $this->Request()->getParam('value');
         $secret = $this->Request()->getParam('secret');
-        $config_secret = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinCash', 'zw_callback_secret');
+        $config_secret = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_callback_secret');
 
         $result = Shopware()->Db()->fetchRow("SELECT * FROM `zwilla_free_bitcoincash_address` WHERE `address` = '".$address."'");
         if ($result) {

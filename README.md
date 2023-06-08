@@ -1,4 +1,4 @@
-# ZwWebPaymentBitcoinCash
+# ZwWebPaymentBitcoinSV
 
 ## A BitcoinSV integration for shopware
 

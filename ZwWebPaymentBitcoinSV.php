@@ -9,17 +9,17 @@
  */
 
 
-namespace ZwWebPaymentBitcoinCash;
+namespace ZwWebPaymentBitcoinSV;
 
 use Doctrine\ORM\Tools\SchemaTool;
 use Shopware\Components\Plugin;
-use ZwWebPaymentBitcoinCash\Components\BitcoinSV\AddressValidator;
+use ZwWebPaymentBitcoinSV\Components\BitcoinSV\AddressValidator;
 use Shopware\Bundle\AttributeBundle\Service\DataLoader;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UninstallContext;
 use Shopware\Components\Plugin\Context\UpdateContext;
 
-class ZwWebPaymentBitcoinCash extends Plugin
+class ZwWebPaymentBitcoinSV extends Plugin
 {
     public static function getSubscribedEvents()
     {
