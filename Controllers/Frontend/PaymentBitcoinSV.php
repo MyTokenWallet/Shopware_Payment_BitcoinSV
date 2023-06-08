@@ -52,7 +52,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
      */
     public function indexAction()
     {
-        if ($this->getPaymentShortName() == 'zwillaweb_payment_bitcoincash') {
+        if ($this->getPaymentShortName() == 'zwillaweb_payment_bitcoinsv') {
             $this->forward('gateway');
         } else {
             $this->redirect(array('controller' => 'checkout'));

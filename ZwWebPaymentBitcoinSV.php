@@ -139,15 +139,15 @@ class ZwWebPaymentBitcoinSV extends Plugin
     private function createMyPayment()
     {
         $options = array(
-                'name' => 'zwillaweb_payment_bitcoincash',
+                'name' => 'zwillaweb_payment_bitcoinsv',
                 'description' => 'BitcoinSV',
-                'action' => 'payment_bitcoincash',
+                'action' => 'payment_bitcoinsv',
                 'active' => 1,
                 'position' => 0,
                 'additionalDescription' => 'Pay save and secured with BitcoinSV.'
             );
 
-        $payment = Shopware()->Models()->getRepository('Shopware\Models\Payment\Payment')->findOneBy(array('name' => 'zwillaweb_payment_bitcoincash'));
+        $payment = Shopware()->Models()->getRepository('Shopware\Models\Payment\Payment')->findOneBy(array('name' => 'zwillaweb_payment_bitcoinsv'));
 
         if ($payment === null) {
             $payment = new \Shopware\Models\Payment\Payment();

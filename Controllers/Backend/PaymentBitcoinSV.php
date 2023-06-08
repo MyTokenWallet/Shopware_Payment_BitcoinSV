@@ -131,7 +131,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
                     'dispatchDescription' => 'd.name'
                 )
             )
-            ->where('p.name LIKE ?', 'zwillaweb_payment_bitcoincash')
+            ->where('p.name LIKE ?', 'zwillaweb_payment_bitcoinsv')
             ->where('o.status >= 0')
             ->order(array($property . ' ' . $direction))
             ->limit($limit, $start);
@@ -261,7 +261,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
 
     public function indexAction()
     {
-        $this->View()->loadTemplate("backend/payment_bitcoincash/app.js");
+        $this->View()->loadTemplate("backend/payment_bitcoinsv/app.js");
             $this->View()->assign(array(
                     "data" => '$store',
                     "total" => '$total',
