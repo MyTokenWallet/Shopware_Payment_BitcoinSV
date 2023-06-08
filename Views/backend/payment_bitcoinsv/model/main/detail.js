@@ -12,7 +12,7 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.model.main.Detail', {
         { name: 'number', type: 'int' },
         { name: 'transaction_hash', type: 'string' },
         { name: 'confirmations', type: 'int' },
-        { name: 'value_in_bch', type: 'float' },
+        { name: 'value_in_bsv', type: 'float' },
 		{ name: 'crdate',  type: 'date' },
         { name: 'update',  type: 'date' }
 	]

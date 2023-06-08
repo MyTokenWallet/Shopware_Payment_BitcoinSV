@@ -46,19 +46,19 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.List', {
             flex: 3,
             dataIndex: 'bitcoinsv_address'
         },{
-            text: '{s name=list/columns/value_in_bch}Value in BSV{/s}',
+            text: '{s name=list/columns/value_in_bsv}Value in BSV{/s}',
             flex: 2,
             align: 'right',
             dataIndex: 'valueInBSV'
         },{
-            text: '{s name=list/columns/total_paid_in_bch}Paid in BSV{/s}',
+            text: '{s name=list/columns/total_paid_in_bsv}Paid in BSV{/s}',
             flex: 2,
             align: 'right',
-            dataIndex: 'total_paid_in_bch'
+            dataIndex: 'total_paid_in_bsv'
         },{
             text: '{s name=list/columns/bitcoincash_status}BitcoinSV Status{/s}',
             flex: 2,
-            dataIndex: 'bchStatus'
+            dataIndex: 'bsvStatus'
         },{
             text: '{s name=list/columns/order_status_text}Order status{/s}',
             flex: 2,

@@ -59,9 +59,9 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.Detail', {
             flex: 1,
             dataIndex: 'confirmations'
         },{
-            text: '{s name=detail/columns/value_in_bch_text}Value in BSV{/s}',
+            text: '{s name=detail/columns/value_in_bsv_text}Value in BSV{/s}',
             flex: 2,
-            dataIndex: 'value_in_bch'
+            dataIndex: 'value_in_bsv'
         }];
     }
 });

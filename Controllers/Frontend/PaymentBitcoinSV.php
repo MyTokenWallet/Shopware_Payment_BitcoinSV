@@ -76,7 +76,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinSV extends Shopware_Controller
                 $this->redirect(array('controller' => 'checkout'));
             } else {
                 /** https://cex.io/api/last_price/BSV/EUR **/
-                //$value_in_BSV = file_get_contents("https://blockchain.info/tobch?currency=".$currency_iso_code."&value=".$amountdue."");
+                //$value_in_BSV = file_get_contents("https://blockchain.info/tobsv?currency=".$currency_iso_code."&value=".$amountdue."");
                 $json = file_get_contents('https://cex.io/api/last_price/BSV/EUR');
                 $json = json_decode($json, true);
 
@@ -208,20 +208,20 @@ class Shopware_Controllers_Frontend_PaymentBitcoinSV extends Shopware_Controller
                         FROM `zwilla_free_bitcoinsv_transaction`
                         WHERE `address` = '".$address."' AND `confirmations` > 5");
 
-                    $total_paid_in_bch = $total_paid_in_satoshi / 100000000;
+                    $total_paid_in_bsv = $total_paid_in_satoshi / 100000000;
                     $order = Shopware()->Modules()->Order();
 
-                    if ($total_paid_in_bch >= $to_pay_in_BSV) {
-                        if ($total_paid_in_bch == $to_pay_in_BSV) {
+                    if ($total_paid_in_bsv >= $to_pay_in_BSV) {
+                        if ($total_paid_in_bsv == $to_pay_in_BSV) {
                             $order->setPaymentStatus($id_order, 12, true, 'Paid');
                             $order->setOrderStatus($id_order, 1, false, 'In Process');
                             Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'Paid' WHERE `address` = '".$address."'");
-                        } elseif ($total_paid_in_bch > $to_pay_in_BSV) {
+                        } elseif ($total_paid_in_bsv > $to_pay_in_BSV) {
                             $order->setPaymentStatus($id_order, 12, true, 'OverPaid');
                             $order->setOrderStatus($id_order, 8, false, 'Clarification Required, OverPaid');
                             Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'OverPaid' WHERE `address` = '".$address."'");
                         }
-                    } elseif ($total_paid_in_bch < $to_pay_in_BSV) {
+                    } elseif ($total_paid_in_bsv < $to_pay_in_BSV) {
                         $order->setPaymentStatus($id_order, 11, true, 'UnderPaid');
                         Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'UnderPaid' WHERE `address` = '".$address."'");
                     }

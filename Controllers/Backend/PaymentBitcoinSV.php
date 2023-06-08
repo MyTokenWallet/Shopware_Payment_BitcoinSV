@@ -103,10 +103,10 @@ class Shopware_Controllers_Backend_PaymentBitcoinSV extends Shopware_Controllers
                 )
             )
             ->joinLeft(
-                array('bcha' => 'zwilla_free_bitcoinsv_address'),
-                'bcha.address = o.transactionID',
+                array('bsva' => 'zwilla_free_bitcoinsv_address'),
+                'bsva.address = o.transactionID',
                 array(
-                    'bchStatus' => 'bcha.status', 'valueInBSV' => 'bcha.value_in_BSV'
+                    'bsvStatus' => 'bsva.status', 'valueInBSV' => 'bsva.value_in_BSV'
                 )
             )
             ->joinLeft(
@@ -165,7 +165,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinSV extends Shopware_Controllers
             }
             $row['orderDate'] = new DateTime($row['orderDate']);
             $row['amountFormat'] = Shopware()->Currency()->toCurrency($row['amount'], array('currency' => $row['currency']));
-            $row['total_paid_in_bch'] = $row['total_paid_in_satoshi'] / 100000000;
+            $row['total_paid_in_bsv'] = $row['total_paid_in_satoshi'] / 100000000;
         }
 
         $this->View()->assign(array('data' => $rows, 'total' => $total, 'success' => true));
@@ -249,7 +249,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinSV extends Shopware_Controllers
         foreach ($rows as &$row) {
             $nr++;
             $row['number'] = $nr;
-            $row['value_in_bch'] = $row['value_in_satoshi'] / 100000000;
+            $row['value_in_bsv'] = $row['value_in_satoshi'] / 100000000;
         }
 
         if ($total > 0) {

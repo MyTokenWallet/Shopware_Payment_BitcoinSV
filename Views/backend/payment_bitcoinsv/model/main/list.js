@@ -13,8 +13,8 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.model.main.List', {
 		{ name: 'userId',  type: 'string' },
 		{ name: 'bitcoinsv_address', type: 'string' },
 		{ name: 'valueInBSV', type: 'float' },
-		{ name: 'total_paid_in_bch', type: 'float' },
-		{ name: 'bchStatus', type: 'string' },
+		{ name: 'total_paid_in_bsv', type: 'float' },
+		{ name: 'bsvStatus', type: 'string' },
 
 		{ name: 'clearedId', type: 'int' },
 		{ name: 'statusId', type: 'int' },
