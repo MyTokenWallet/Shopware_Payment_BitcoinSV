@@ -186,26 +186,26 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
 
             if ($secret_sent === $secret) {
                 if ($confirmations <= 5) {
-                    Shopware()->Db()->exec("INSERT IGNORE INTO `zwilla_free_bitcoincash_transaction` 
+                    Shopware()->Db()->exec("INSERT IGNORE INTO `zwilla_free_bitcoinsv_transaction`
                         (`transaction_hash`,`address`,`confirmations`,`value_in_satoshi`,`crdate`) 
                     VALUES
                         ('".$transaction_hash."', '".$address."', '".(int)$confirmations."', '".(double)$value_in_satoshi."', CURRENT_TIMESTAMP)");
 
                     Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'AwaitingConfirmations' WHERE `address` = '".$address."'");
-                    Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_transaction` SET `confirmations` = '".(int)$confirmations."' WHERE `transaction_hash` = '".$transaction_hash."'");
+                    Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_transaction` SET `confirmations` = '".(int)$confirmations."' WHERE `transaction_hash` = '".$transaction_hash."'");
 
                     echo '*waiting 6 confirmations*';
                     exit;
                 } elseif ($confirmations > 5) {
-                    Shopware()->Db()->exec("INSERT IGNORE INTO `zwilla_free_bitcoincash_transaction` 
+                    Shopware()->Db()->exec("INSERT IGNORE INTO `zwilla_free_bitcoinsv_transaction`
                         (`transaction_hash`,`address`,`confirmations`,`value_in_satoshi`,`crdate`) 
                     VALUES
                         ('".$transaction_hash."', '".$address."', '".(int)$confirmations."', '".(double)$value_in_satoshi."', CURRENT_TIMESTAMP)");
 
-                    Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_transaction` SET `confirmations` = '".(int)$confirmations."' WHERE `transaction_hash` = '".$transaction_hash."'");
+                    Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_transaction` SET `confirmations` = '".(int)$confirmations."' WHERE `transaction_hash` = '".$transaction_hash."'");
                     $total_paid_in_satoshi = (double)Shopware()->Db()->fetchOne("
                         SELECT SUM(`value_in_satoshi`)
-                        FROM `zwilla_free_bitcoincash_transaction`
+                        FROM `zwilla_free_bitcoinsv_transaction`
                         WHERE `address` = '".$address."' AND `confirmations` > 5");
 
                     $total_paid_in_bch = $total_paid_in_satoshi / 100000000;

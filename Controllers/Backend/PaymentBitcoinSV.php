@@ -70,7 +70,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
                         ->limit(1) . ')'),
                 'total_paid_in_satoshi' => new Zend_Db_Expr('(' . $this->get('db')
                         ->select()
-                        ->from(array('zwilla_free_bitcoincash_transaction'), array('SUM(value_in_satoshi)'))
+                        ->from(array('zwilla_free_bitcoinsv_transaction'), array('SUM(value_in_satoshi)'))
                         ->where('address = o.transactionID')
                         ->where('confirmations > 5') . ')')
             ))
@@ -233,7 +233,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
 
         $select = $this->get('db')
             ->select()
-            ->from(array('zwilla_free_bitcoincash_transaction' => 'zwilla_free_bitcoincash_transaction'), array(
+            ->from(array('zwilla_free_bitcoinsv_transaction' => 'zwilla_free_bitcoinsv_transaction'), array(
                 'transaction_hash' => 'transaction_hash',
                 'confirmations' => 'confirmations',
                 'value_in_satoshi' => 'value_in_satoshi',
