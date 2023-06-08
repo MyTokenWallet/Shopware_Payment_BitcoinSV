@@ -132,7 +132,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
                         $orderCurrency = $order->getCurrency();
                         $invoiceAmount = $order->getInvoiceAmount();
 
-                        Shopware()->Db()->exec("INSERT INTO `zwilla_free_bitcoincash_address` 
+                        Shopware()->Db()->exec("INSERT INTO `zwilla_free_bitcoinsv_address`
                                 (`id_order`,`value_in_BSV`,`address`,`status`,`crdate`)
                             VALUES
                                 ('".(int)$orderId."', '".(double)$value_in_BSV."', '".$address."', 'Pending', CURRENT_TIMESTAMP)");
@@ -177,7 +177,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
         $secret = $this->Request()->getParam('secret');
         $config_secret = Shopware()->Config()->getByNamespace('ZwWebPaymentBitcoinSV', 'zw_callback_secret');
 
-        $result = Shopware()->Db()->fetchRow("SELECT * FROM `zwilla_free_bitcoincash_address` WHERE `address` = '".$address."'");
+        $result = Shopware()->Db()->fetchRow("SELECT * FROM `zwilla_free_bitcoinsv_address` WHERE `address` = '".$address."'");
         if ($result) {
             $id_order = $result['id_order'];
             $to_pay_in_BSV = $result['value_in_BSV'];
@@ -191,7 +191,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
                     VALUES
                         ('".$transaction_hash."', '".$address."', '".(int)$confirmations."', '".(double)$value_in_satoshi."', CURRENT_TIMESTAMP)");
 
-                    Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'AwaitingConfirmations' WHERE `address` = '".$address."'");
+                    Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'AwaitingConfirmations' WHERE `address` = '".$address."'");
                     Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_transaction` SET `confirmations` = '".(int)$confirmations."' WHERE `transaction_hash` = '".$transaction_hash."'");
 
                     echo '*waiting 6 confirmations*';
@@ -215,15 +215,15 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
                         if ($total_paid_in_bch == $to_pay_in_BSV) {
                             $order->setPaymentStatus($id_order, 12, true, 'Paid');
                             $order->setOrderStatus($id_order, 1, false, 'In Process');
-                            Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'Paid' WHERE `address` = '".$address."'");
+                            Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'Paid' WHERE `address` = '".$address."'");
                         } elseif ($total_paid_in_bch > $to_pay_in_BSV) {
                             $order->setPaymentStatus($id_order, 12, true, 'OverPaid');
                             $order->setOrderStatus($id_order, 8, false, 'Clarification Required, OverPaid');
-                            Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'OverPaid' WHERE `address` = '".$address."'");
+                            Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'OverPaid' WHERE `address` = '".$address."'");
                         }
                     } elseif ($total_paid_in_bch < $to_pay_in_BSV) {
                         $order->setPaymentStatus($id_order, 11, true, 'UnderPaid');
-                        Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoincash_address` SET `status` = 'UnderPaid' WHERE `address` = '".$address."'");
+                        Shopware()->Db()->exec("UPDATE `zwilla_free_bitcoinsv_address` SET `status` = 'UnderPaid' WHERE `address` = '".$address."'");
                     }
 
                     Shopware()->Db()->exec("UPDATE `s_order` SET `cleareddate` = NOW() WHERE `transactionID` = '".$address."'");

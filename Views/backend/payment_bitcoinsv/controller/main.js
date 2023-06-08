@@ -138,8 +138,8 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.controller.Main', {
                     'shopId': shopId
                 },
                 filters : [{
-                    property: 'bitcoincash_address',
-                    value: record.get('bitcoincash_address')
+                    property: 'bitcoinsv_address',
+                    value: record.get('bitcoinsv_address')
                 }],
                 callback: me.onLoadDetail,
                 scope: me

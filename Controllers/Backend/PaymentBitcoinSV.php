@@ -51,7 +51,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
                 'orderDate' => 'ordertime',
                 'orderNumber' => 'ordernumber',
                 'shopId' => 'subshopID',
-                'bitcoincash_address' => 'transactionID',
+                'bitcoinsv_address' => 'transactionID',
                 'comment' => 'customercomment',
                 'clearedDate' => 'cleareddate',
                 'trackingId' => 'trackingcode',
@@ -103,7 +103,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
                 )
             )
             ->joinLeft(
-                array('bcha' => 'zwilla_free_bitcoincash_address'),
+                array('bcha' => 'zwilla_free_bitcoinsv_address'),
                 'bcha.address = o.transactionID',
                 array(
                     'bchStatus' => 'bcha.status', 'valueInBSV' => 'bcha.value_in_BSV'
@@ -196,11 +196,11 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
     }
 
     /**
-     * Will register the correct shop for a given bitcoincash_address.
+     * Will register the correct shop for a given bitcoinsv_address.
      *
-     * @param $bitcoincash_address
+     * @param $bitcoinsv_address
      */
-    public function registerShopBybitcoincash_address($bitcoincash_address)
+    public function registerShopBybitcoinsv_address($bitcoinsv_address)
     {
         // Query shopId and api-user if available
         $sql = '
@@ -210,7 +210,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
               ON s_order_attributes.orderID = s_order.id
             WHERE s_order.transactionID = ?
         ';
-        $result = $this->get('db')->fetchOne($sql, array($bitcoincash_address));
+        $result = $this->get('db')->fetchOne($sql, array($bitcoinsv_address));
 
         if (!empty($result)) {
             $this->registerShopByShopId($result);
@@ -223,13 +223,13 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
     public function getDetailsAction()
     {
         $filter = $this->Request()->getParam('filter');
-        if (isset($filter[0]['property']) && $filter[0]['property'] == 'bitcoincash_address') {
-            $this->Request()->setParam('bitcoincash_address', $filter[0]['value']);
+        if (isset($filter[0]['property']) && $filter[0]['property'] == 'bitcoinsv_address') {
+            $this->Request()->setParam('bitcoinsv_address', $filter[0]['value']);
         }
-        $bitcoincash_address = $this->Request()->getParam('bitcoincash_address');
+        $bitcoinsv_address = $this->Request()->getParam('bitcoinsv_address');
 
         // Load the correct shop in order to use the correct api credentials
-        $this->registerShopBybitcoincash_address($bitcoincash_address);
+        $this->registerShopBybitcoinsv_address($bitcoinsv_address);
 
         $select = $this->get('db')
             ->select()
@@ -240,7 +240,7 @@ class Shopware_Controllers_Backend_PaymentBitcoinCash extends Shopware_Controlle
                 'crdate' => 'crdate',
                 'update' => 'update'
             ))
-            ->where('address = ?', $bitcoincash_address);
+            ->where('address = ?', $bitcoinsv_address);
 
         $rows = $this->get('db')->fetchAll($select);
         $total = $this->get('db')->fetchOne('SELECT FOUND_ROWS()');

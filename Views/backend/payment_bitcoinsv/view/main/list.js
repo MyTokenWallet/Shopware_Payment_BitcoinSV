@@ -42,9 +42,9 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.List', {
             flex: 1,
             dataIndex: 'orderNumber'
         },{
-            text: '{s name=list/columns/bitcoincash_address_text}BitcoinSV address{/s}',
+            text: '{s name=list/columns/bitcoinsv_address_text}BitcoinSV address{/s}',
             flex: 3,
-            dataIndex: 'bitcoincash_address'
+            dataIndex: 'bitcoinsv_address'
         },{
             text: '{s name=list/columns/value_in_bch}Value in BSV{/s}',
             flex: 2,

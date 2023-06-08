@@ -11,7 +11,7 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.model.main.List', {
 	fields: [
 		{ name: 'id', type: 'int' },
 		{ name: 'userId',  type: 'string' },
-		{ name: 'bitcoincash_address', type: 'string' },
+		{ name: 'bitcoinsv_address', type: 'string' },
 		{ name: 'valueInBSV', type: 'float' },
 		{ name: 'total_paid_in_bch', type: 'float' },
 		{ name: 'bchStatus', type: 'string' },

@@ -31,7 +31,7 @@ class ZwWebPaymentBitcoinSV extends Plugin
 
     public function install(InstallContext $context)
     {
-        $sql_a = "CREATE TABLE IF NOT EXISTS `zwilla_free_bitcoincash_address` (
+        $sql_a = "CREATE TABLE IF NOT EXISTS `zwilla_free_bitcoinsv_address` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `id_order` int(11),
             `value_in_BSV` double NOT NULL,
@@ -61,17 +61,17 @@ class ZwWebPaymentBitcoinSV extends Plugin
         Shopware()->Db()->exec($sql_b);
 
         $database_name = Shopware()->Db()->fetchOne('SELECT DATABASE()');
-        $database_engine = Shopware()->Db()->fetchOne("SELECT `ENGINE` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA`='".$database_name."' AND `TABLE_NAME`='zwilla_free_bitcoincash_address'");
+        $database_engine = Shopware()->Db()->fetchOne("SELECT `ENGINE` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA`='".$database_name."' AND `TABLE_NAME`='zwilla_free_bitcoinsv_address'");
 
         if ($database_engine == 'InnoDB') {
-            $result1 = Shopware()->Db()->fetchOne("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` WHERE `TABLE_NAME` = 'zwilla_free_bitcoincash_address' AND `CONSTRAINT_NAME` = 'zwilla_free_bitcoincash_address_ibfk_1' AND `TABLE_SCHEMA` = '".$database_name."'");
+            $result1 = Shopware()->Db()->fetchOne("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` WHERE `TABLE_NAME` = 'zwilla_free_bitcoinsv_address' AND `CONSTRAINT_NAME` = 'zwilla_free_bitcoinsv_address_ibfk_1' AND `TABLE_SCHEMA` = '".$database_name."'");
             if (empty($result1)) {
-                Shopware()->Db()->exec("ALTER IGNORE TABLE `zwilla_free_bitcoincash_address` ADD CONSTRAINT `zwilla_free_bitcoincash_address_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `s_order_attributes` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE");
+                Shopware()->Db()->exec("ALTER IGNORE TABLE `zwilla_free_bitcoinsv_address` ADD CONSTRAINT `zwilla_free_bitcoinsv_address_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `s_order_attributes` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE");
             }
 
             $result2 = Shopware()->Db()->fetchOne("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` WHERE `TABLE_NAME` = 'zwilla_free_bitcoincash_transaction' AND `CONSTRAINT_NAME` = 'zwilla_free_bitcoincash_transaction_ibfk_1' AND `TABLE_SCHEMA` = '".$database_name."'");
             if (empty($result2)) {
-                Shopware()->Db()->exec("ALTER IGNORE TABLE `zwilla_free_bitcoincash_transaction` ADD CONSTRAINT `zwilla_free_bitcoincash_transaction_ibfk_1` FOREIGN KEY (`address`) REFERENCES `zwilla_free_bitcoincash_address` (`address`) ON DELETE CASCADE ON UPDATE CASCADE");
+                Shopware()->Db()->exec("ALTER IGNORE TABLE `zwilla_free_bitcoincash_transaction` ADD CONSTRAINT `zwilla_free_bitcoincash_transaction_ibfk_1` FOREIGN KEY (`address`) REFERENCES `zwilla_free_bitcoinsv_address` (`address`) ON DELETE CASCADE ON UPDATE CASCADE");
             }
         }
 
