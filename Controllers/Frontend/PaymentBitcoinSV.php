@@ -18,7 +18,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
     private $session;
 
     /**
-     * Whitelist notify- and webhook-action for bitcoincash
+     * Whitelist notify- and webhook-action for bitcoinsv
      */
     public function getWhitelistedCSRFActions()
     {
@@ -141,7 +141,7 @@ class Shopware_Controllers_Frontend_PaymentBitcoinCash extends Shopware_Controll
 
                         Shopware()->Models()->flush($order);
                         $this->View()->receivedAddress = 'YES';
-                        $this->View()->bitcoincashAddress = $address;
+                        $this->View()->bitcoinsvAddress = $address;
                         $this->View()->valueInBCH = $value_in_BCH;
                         $this->View()->orderNumber = $orderNumber;
                         $this->View()->invoiceAmount = $invoiceAmount;
