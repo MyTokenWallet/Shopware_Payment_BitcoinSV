@@ -56,7 +56,7 @@ Ext.define('Shopware.apps.PaymentBitcoinSV.view.main.List', {
             align: 'right',
             dataIndex: 'total_paid_in_bsv'
         },{
-            text: '{s name=list/columns/bitcoincash_status}BitcoinSV Status{/s}',
+            text: '{s name=list/columns/bitcoinsv_status}BitcoinSV Status{/s}',
             flex: 2,
             dataIndex: 'bsvStatus'
         },{

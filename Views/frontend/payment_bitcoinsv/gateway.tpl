@@ -18,7 +18,7 @@
 {* Main content *}
 {block name="frontend_index_content"}
     {if $receivedAddress == 'YES'}
-        <h2 class="headingbox_dark largesize">{s name="UseBitcoinCashAddress"}Use BitcoinSV Address{/s}:</h2>
+        <h2 class="headingbox_dark largesize">{s name="UseBitcoinSVAddress"}Use Bitcoin SV Address{/s}:</h2>
         <br />- {s name="Amount"}Amount{/s} : <span class="price"><strong>{$invoiceAmount} {$orderCurrency}</strong></span>
         <br />- {s name="SendExactly"}Send exactly{/s} <strong>{$valueInBSV} BSV</strong> {s name="ToThisBitcoinCashAddress"}to this BitcoinSV Address{/s}:
         <div style="padding: 5px"><a target="_blank" style="background-color: white;" href="bitcoinsv:{$bitcoinsvAddress}?amount={$valueInBSV}&label=Order%3A{$orderNumber}">{$bitcoinsvAddress}</a></div>

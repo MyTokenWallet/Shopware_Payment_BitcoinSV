@@ -5,11 +5,11 @@
     <label lang="de">BitcoinSV</label>
     <label lang="en">BitcoinSV</label>
 
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <copyright>LX and ZWILLA</copyright>
     <license>MIT</license>
 
-    <link>https://github/zwilla/zwilla_shopware_bicoincash_payment/</link>
+    <link>https://github/zwilla/zwilla_shopware_bicoinsv_payment/</link>
     <author>LX and Zwilla</author>
     <compatibility minVersion="5.2.9" />
 
@@ -36,5 +36,10 @@
     <changelog version="1.0.1">
         <changes lang="de">Added plugin.xml</changes>
         <changes lang="en">Added plugin.xml</changes>
+    </changelog>
+
+    <changelog version="1.0.2">
+        <changes lang="de">Bitcoin SV support</changes>
+        <changes lang="en">Bitcoin SV support</changes>
     </changelog>
 </plugin>
